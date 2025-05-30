@@ -1,0 +1,194 @@
+/* Resume.css - Version 2 */
+body, html, #root {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #fff !important;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-bg-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* Use a distinct white shade for the resume card */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f3f6fa; /* Changed to a cooler, distinct white shade */
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+  box-sizing: border-box;
+}
+  
+  .header {
+    text-align: left;         /* Move header content to the left */
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 20px;
+    padding-left: 0;          /* Remove any extra left padding */
+  }
+  
+  .name {
+    font-size: 28px;
+    font-weight: bold;        /* Make it bold */
+    margin: 0 0 5px 0;
+    letter-spacing: 1px;
+    text-align: left;         /* Ensure the name is left-aligned */
+  }
+  
+  .title {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 15px 0;
+    font-weight: normal;
+  }
+  
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 14px;
+  }
+  
+  .contact-item {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .section {
+    margin-bottom: 25px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    color: #333;
+  }
+  
+  .subsection-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .company {
+    font-weight: bold;
+    font-size: 15px;
+  }
+  
+  .duration {
+    font-style: italic;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .bullet-point {
+    margin-bottom: 6px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+  }
+  
+  .bullet {
+    position: absolute;
+    left: 8px;
+    top: 2px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  
+  .table-header {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .table-cell {
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+  
+  .skills-list {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  
+  .project-title {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #111 !important;
+  }
+  
+  .project-link {
+    color: #0066cc;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  
+  .certification-item {
+    font-size: 14px;
+    margin-bottom: 6px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+.resume-page-wrapper {
+  display: flex;
+  align-items: flex-start;      /* Keep items aligned at the top */
+  justify-content: center;      /* Center the whole group horizontally */
+  width: auto;                  /* Remove 100% width so content is tightly grouped */
+  max-width: none;              /* Remove max-width restriction */
+  gap: 24px;                    /* Space between resume and SVG */
+  margin: 0 auto;               /* Center the group in the parent */
+}
+
+.resume-download-svg {
+  margin-top: 40px;             /* Align with the name/title */
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.resume-download-svg svg {
+  width: 32px;
+  height: 32px;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.resume-download-svg:hover svg {
+  color: #007bff;
+}
