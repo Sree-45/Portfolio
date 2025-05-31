@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react"; // NEW: Added useEffect, useRef
+import React, { useState, useEffect, useRef } from "react"; 
 import "../styles/LandingPage.css";
 import skillsData from "../data/SkillData";
-import projectsData from "../data/ProjectData"; // Importing project data
-import profileImage from "/profile.jpg"; // Importing profile image
+import projectsData from "../data/ProjectData"; 
+import profileImage from "/profile.jpg"; 
 import educationDetails from "../data/EducationData";
 import emailjs from '@emailjs/browser';
-import { useNavigate } from "react-router-dom"; // Add this import
+import { useNavigate } from "react-router-dom";
 
 
 function useSlideUpOnScroll(ref) {
@@ -30,16 +30,14 @@ function LandingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSuccess, setModalSuccess] = useState(true);
-  // NEW: State to manage the hamburger menu's color class
   const [hamburgerColorClass, setHamburgerColorClass] = useState('');
-  // NEW: Refs for the hamburger menu and the projects container
   const hamburgerMenuRef = useRef(null);
   const projectsContainerRef = useRef(null);
   const contactContainerRef = useRef(null);
   const formRef = useRef();
-  const skillsContainerRef = useRef(null); // Add this line
+  const skillsContainerRef = useRef(null); 
 
-  const navigate = useNavigate(); // NEW: useNavigate hook for navigation
+  const navigate = useNavigate(); 
   
 
   const sendEmail = (e) => {
@@ -64,7 +62,6 @@ function LandingPage() {
     setMenuOpen(!menuOpen);
   };
 
-  // Helper function to assign layout classes based on category name
   const getCategoryLayoutClass = (categoryName) => {
     switch (categoryName) {
       case "Web Development":
@@ -74,7 +71,7 @@ function LandingPage() {
       case "Data science and ML":
         return "layout-data-ml";
       case "Cloud, DevOps & Databases":
-        return "layout-cloud-db"; // New combined class
+        return "layout-cloud-db"; 
       default:
         return "";
     }
@@ -84,12 +81,12 @@ function LandingPage() {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false); // Close menu after click
+      setMenuOpen(false); 
     }
   };
 
 
-  // NEW: useEffect to handle scroll detection for hamburger menu color change
+
   useEffect(() => {
     const handleScroll = () => {
       if (hamburgerMenuRef.current && projectsContainerRef.current) {
@@ -97,36 +94,31 @@ function LandingPage() {
         const projectsRect = projectsContainerRef.current.getBoundingClientRect();
         const contactRect = contactContainerRef.current.getBoundingClientRect();
 
-        // Check if the hamburger menu is vertically overlapping with the projects container
         const isOverlappingProjects =
           (menuRect.bottom > projectsRect.top && menuRect.top < projectsRect.bottom) || (menuRect.bottom > contactRect.top && menuRect.top < contactRect.bottom) ;
 
         if (isOverlappingProjects) {
-          setHamburgerColorClass('hamburger-green'); // Apply green class
+          setHamburgerColorClass('hamburger-green'); 
         } else {
-          setHamburgerColorClass(''); // Revert to default color (no extra class)
+          setHamburgerColorClass(''); 
         }
       }
     };
 
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-    // Call handler once on mount to set initial state correctly
     handleScroll();
 
-    // Cleanup: remove event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // Empty dependency array ensures this runs once on mount and unmount
+  }, []); 
 
   return (
     <div className="page-wrapper">
-      {/* Landing Container (Hero Section) */}
       <div className="landing-container">
         <button
-          ref={hamburgerMenuRef} // NEW: Attach ref to hamburger menu
-          className={`hamburger-menu ${menuOpen ? "open" : ""} ${hamburgerColorClass}`} // NEW: Apply dynamic color class
+          ref={hamburgerMenuRef} 
+          className={`hamburger-menu ${menuOpen ? "open" : ""} ${hamburgerColorClass}`} 
           onClick={toggleMenu}
         >
           <span className="line line-1"></span>
@@ -172,6 +164,7 @@ function LandingPage() {
 </div>
 
         <div className="left-section">
+          <div className="landing-content">
           <div className="headline">
             <h1>
               Sreeshanth<br />Kandagatla<span className="white-dot">.</span>
@@ -180,6 +173,7 @@ function LandingPage() {
           <div className="tagline">
             <p>Final Year CSE student, passionate about web and data-driven solutions. Proficient in MERN Stack, Java with Spring Boot, ReactJS, Python for Machine Learning/Data Analytics, and databases like SQL and MongoDB. Eager to build innovative products in challenging software engineering roles.</p>
           </div>
+        </div>
         </div>
 
         <div className="profile-container">
@@ -205,9 +199,8 @@ function LandingPage() {
           <div className="diamond"></div>
           <div className="diamond"></div>
         </div>
-      </div> {/* End of landing-container */}
+      </div> 
 
-      {/* New Skills Section */}
       <div className="skills-container" id="skills">
       <svg className="dots-blue-skills" width="150px" height="150px" viewBox="690 415 215 200" preserveAspectRatio="xMidYMid meet">
             <path fill="#4831d4" d="M692.477 418.551a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013 0zM711.444 418.551a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM730.412 418.551a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013.001 0zM749.38 418.551a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013 0zM768.348 418.551a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013 0zM787.315 418.551a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM806.283 418.551a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM825.252 418.551a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013.001 0zM844.22 418.551a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013 0zM863.188 418.551a1.5 1.5 0 11-3.002 0 1.5 1.5 0 013.001 0zM882.155 418.551a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM901.123 418.551a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013.001 0zM692.477 437.774a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 .001zM711.444 437.774a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 .001zM730.412 437.774a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001.001zM749.38 437.774a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 .001zM768.348 437.774a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 .001zM787.315 437.774a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM806.283 437.774a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM825.252 437.774a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001.001zM844.22 437.774a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 .001zM863.188 437.774a1.5 1.5 0 11-3.002-.001 1.5 1.5 0 013.001.001zM882.155 437.774a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 .001zM901.123 437.774a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001.001zM692.477 456.998a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM711.444 456.998a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 0zM730.412 456.998a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM749.38 456.998a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM768.348 456.998a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM787.315 456.998a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM806.283 456.998a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM825.252 456.998a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM844.22 456.998a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM863.188 456.998a1.5 1.5 0 11-3.002-.001 1.5 1.5 0 013.001 0zM882.155 456.998a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 .001zM901.123 456.998a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM692.477 476.22a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013 0zM711.444 476.22a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM730.412 476.22a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013.001 0zM749.38 476.22a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013 0zM768.348 476.22a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013 0zM787.315 476.22a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM806.283 476.22a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM825.252 476.22a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013.001 0zM844.22 476.22a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013 0zM863.188 476.22a1.5 1.5 0 11-3.002 0 1.5 1.5 0 013.001 0zM882.155 476.22a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM901.123 476.22a1.5 1.5 0 11-3.001 0 1.5 1.5 0 013.001 0zM692.477 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM711.444 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM730.412 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM749.38 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM768.348 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM787.315 495.443a1.5 1.5 0 11-2.998.001 1.5 1.5 0 012.998-.001zM806.283 495.443a1.5 1.5 0 11-2.998.001 1.5 1.5 0 012.998-.001zM825.252 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM844.22 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM863.188 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM882.155 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM901.123 495.443a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM692.477 514.667a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM711.444 514.667a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 0zM730.412 514.667a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM749.38 514.667a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM768.348 514.667a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM787.315 514.667a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM806.283 514.667a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM825.252 514.667a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM844.22 514.667a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 .001zM863.188 514.667a1.5 1.5 0 11-3.002-.001 1.5 1.5 0 013.001.001zM882.155 514.667a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 .001zM901.123 514.667a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001.001zM692.477 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM711.444 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM730.412 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM749.38 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM768.348 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM787.315 533.89a1.5 1.5 0 11-2.998 0 1.5 1.5 0 012.998 0zM806.283 533.89a1.5 1.5 0 11-2.998 0 1.5 1.5 0 012.998 0zM825.252 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM844.22 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM863.188 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM882.155 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM901.123 533.89a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM692.477 553.113a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 .001zM711.444 553.113a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 .001zM730.412 553.113a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001.001zM749.38 553.113a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 .001zM768.348 553.113a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 .001zM787.315 553.113a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM806.283 553.113a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM825.252 553.113a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001.001zM844.22 553.113a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 .001zM863.188 553.113a1.5 1.5 0 11-3.002-.001 1.5 1.5 0 013.001.001zM882.155 553.113a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 .001zM901.123 553.113a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001.001zM692.477 572.336a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM711.444 572.336a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 0zM730.412 572.336a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM749.38 572.336a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM768.348 572.336a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM787.315 572.336a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM806.283 572.336a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM825.252 572.336a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM844.22 572.336a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM863.188 572.336a1.5 1.5 0 11-3.002-.001 1.5 1.5 0 013.001 0zM882.155 572.336a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 .001zM901.123 572.336a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM692.477 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM711.444 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM730.412 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM749.38 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM768.348 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM787.315 591.558a1.5 1.5 0 11-2.998.002 1.5 1.5 0 012.998-.002zM806.283 591.558a1.5 1.5 0 11-2.998.002 1.5 1.5 0 012.998-.002zM825.252 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM844.22 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM863.188 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM882.155 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM901.123 591.558a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM692.477 610.782a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM711.444 610.782a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 0zM730.412 610.782a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM749.38 610.782a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM768.348 610.782a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM787.315 610.782a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM806.283 610.782a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM825.252 610.782a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0zM844.22 610.782a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013 0zM863.188 610.782a1.5 1.5 0 11-3.002-.001 1.5 1.5 0 013.001 0zM882.155 610.782a1.5 1.5 0 11-3-.001 1.5 1.5 0 013 .001zM901.123 610.782a1.5 1.5 0 11-3.001-.001 1.5 1.5 0 013.001 0z"></path>
@@ -246,10 +239,8 @@ function LandingPage() {
       
       </div>
 
-      {/* Projects Section - Target for color change */}
-      <div ref={projectsContainerRef} className="projects-container" id="projects"> {/* NEW: Attach ref */}
+      <div ref={projectsContainerRef} className="projects-container" id="projects"> 
         <svg className="dots-yellow-projects" width="150px" height="150px" viewBox="690 415 215 200" preserveAspectRatio="xMidYMid meet">
-          {/* ... existing svg path ... */}
         </svg>
         
         <div className="projects-header">
@@ -322,7 +313,6 @@ function LandingPage() {
 
 
 
-{/* Contact Section */}
 <div ref={contactContainerRef} className="contact-container" id="contact">
   
   <div className="contact-header">

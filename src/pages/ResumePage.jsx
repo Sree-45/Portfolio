@@ -5,7 +5,6 @@ function ResumePage() {
     <div className="resume-bg-center">
       <div className="resume-page-wrapper">
         <div className="container">
-          {/* Header */}
           <header className="header">
             <h1 className="name">SREESHANTH KANADGATLA</h1>
             <p className="title">STUDENT</p>
@@ -22,7 +21,6 @@ function ResumePage() {
             </div>
           </header>
 
-          {/* Internships */}
           <section className="section">
             <h2 className="section-title">Internships</h2>
             <div>
@@ -43,7 +41,6 @@ function ResumePage() {
             </div>
           </section>
 
-          {/* Education */}
           <section className="section">
             <h2 className="section-title">Education</h2>
             <table className="table">
@@ -74,7 +71,6 @@ function ResumePage() {
             </table>
           </section>
 
-          {/* Technical Skills */}
           <section className="section">
             <h2 className="section-title">Technical Skills</h2>
             <div className="skills-list">
@@ -129,7 +125,6 @@ function ResumePage() {
             </div>
           </section>
 
-          {/* Projects */}
           <section className="section">
             <h2 className="section-title">Projects</h2>
             
@@ -180,7 +175,6 @@ function ResumePage() {
             </div>
           </section>
 
-          {/* Certifications */}
           <section className="section">
             <h2 className="section-title">Certifications</h2>
             <div className="certification-item">
@@ -214,7 +208,7 @@ function ResumePage() {
           </section>
         </div>
         <div className="resume-download-svg">
-          <a href="/resume.pdf" download>
+          <a href="/resume.pdf" download title="Download Resume">
             <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01"/>
             </svg>
