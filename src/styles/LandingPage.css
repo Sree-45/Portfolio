@@ -1899,3 +1899,39 @@ html::-webkit-scrollbar-thumb:hover {
     background-color: #4831D4 !important; 
   }
 }
+
+
+/* Add these new classes after the skills-category-card:hover rule */
+.skills-category-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.skills-category-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease-out;
+}
+
+.skill-item.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add stagger delay classes for skill items */
+.skill-item:nth-child(1) { transition-delay: 0.1s; }
+.skill-item:nth-child(2) { transition-delay: 0.2s; }
+.skill-item:nth-child(3) { transition-delay: 0.3s; }
+.skill-item:nth-child(4) { transition-delay: 0.4s; }
+.skill-item:nth-child(5) { transition-delay: 0.5s; }
+.skill-item:nth-child(6) { transition-delay: 0.6s; }
+.skill-item:nth-child(7) { transition-delay: 0.7s; }
+.skill-item:nth-child(8) { transition-delay: 0.8s; }
+
+  

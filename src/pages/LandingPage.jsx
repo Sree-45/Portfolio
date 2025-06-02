@@ -36,6 +36,7 @@ function LandingPage() {
   const contactContainerRef = useRef(null);
   const formRef = useRef();
   const skillsContainerRef = useRef(null); 
+const skillsHeaderRef = useRef(null);
 
   const navigate = useNavigate(); 
   
@@ -112,6 +113,34 @@ function LandingPage() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []); 
+
+
+  // Add this to your React component that contains the skills section
+
+useEffect(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // Add animation class when element is in view
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      }
+    });
+  }, {
+    threshold: 0.1 // Trigger when at least 10% of the element is visible
+  });
+
+  // Observe skill category cards
+  document.querySelectorAll('.skills-category-card').forEach(card => {
+    observer.observe(card);
+  });
+
+  // Observe individual skill items
+  document.querySelectorAll('.skill-item').forEach(item => {
+    observer.observe(item);
+  });
+
+  return () => observer.disconnect();
+}, []);
 
   return (
     <div className="page-wrapper">
@@ -410,6 +439,8 @@ function LandingPage() {
     <path fill="#fff" d="M0 0v24h24V0zm9.95 8.002h1.805c.061 0 .111.05.111.111v7.767c0 .061-.05.111-.11.111H9.95a.111.111 0 0 1-.111-.11v-2.87H7.894v2.87c0 .06-.05.11-.11.11H5.976a.11.11 0 0 1-.11-.11V8.112c0-.06.05-.11.11-.11h1.806c.061 0 .11.05.11.11v2.869H9.84v-2.87c0-.06.05-.11.11-.11zm2.999 0h5.778c.061 0 .111.05.111.11v7.767a.11.11 0 0 1-.11.112h-5.78a.11.11 0 0 1-.11-.11v-7.77c0-.06.05-.11.11-.11z"/>
   </svg>
 </a>
+
+
     </div>
   </div>
 </footer>
