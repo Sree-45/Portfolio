@@ -1,4 +1,29 @@
+.install-app-container {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  text-align: right;
+  z-index: 10;
+}
 
+
+.install-app-link {
+  color: #ffffff;
+  background-color: rgba(72, 49, 212, 0.8);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 6px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: -50px;
+}
+.install-app-link:hover {
+  transform: translateY(-2px);
+  color : #CCF381
+}
 
 html,
 body {
@@ -411,12 +436,10 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .popup-socials a:hover svg {
-  transform: scale(1.08);
+  transform: scale(1.15);
 }
 
-.popup-socials a:hover svg path {
-  fill: black !important;
-}
+
 
 .skills-container {
   position: relative;
