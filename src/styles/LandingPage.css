@@ -1958,7 +1958,8 @@ html::-webkit-scrollbar-thumb:hover {
 .skill-item:nth-child(8) { transition-delay: 0.8s; }
 
 /* ===== Profile portrait: circular frame with head breaking out ===== */
-.profile-container { --s: 380px; }
+.profile-container { --s: 470px; }
+@media (min-width: 1700px) { .profile-container { --s: 560px; } }
 
 .profile-placeholder {
   width: var(--s) !important;
@@ -2028,6 +2029,7 @@ html::-webkit-scrollbar-thumb:hover {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 1350px) { .profile-container { --s: 320px; } }
+@media (max-width: 1350px) { .profile-container { --s: 400px; } }
+@media (max-width: 1100px) { .profile-container { --s: 360px; } }
 @media (max-width: 1000px) { .profile-container { --s: 320px; } }
 @media (max-width: 650px)  { .profile-container { --s: 240px; } }
