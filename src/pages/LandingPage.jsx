@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "../styles/LandingPage.css";
 import skillsData from "../data/SkillData";
 import projectsData from "../data/ProjectData"; 
-import profileImage from "/profile.jpg"; 
+import profileImage from "/profile-sticker.webp";
 import educationDetails from "../data/EducationData";
 import emailjs from '@emailjs/browser';
 import { useNavigate } from "react-router-dom";
